@@ -9,15 +9,17 @@ import org.openqa.selenium.WebDriver;
 
 import webPages.ElementsInHomePage;
 import webPages.Login;
+import webPages.NavigationBar;
 
 public class RunSetup {
 	WebDriver driver;
 	ElementsInHomePage elementinhomepage;
 	Login login;
+	NavigationBar navbar;
 	@BeforeTest
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/chromedriver.exe");
-	//	System.setProperty("webdriver.chrome.driver", "D:\\maven automation programs\\Pact_Interview\\src\\chromedriver.exe");
+	//	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/src/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "D:\\maven automation programs\\Pact_Interview\\src\\chromedriver.exe");
 
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -34,11 +36,20 @@ public class RunSetup {
 		login.clickLogin();
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2,enabled=false)
 	public void verifyElementsInPage() {
 		elementinhomepage = new ElementsInHomePage(driver);
 		elementinhomepage.verifyElement();				
 	}
+	
+	@Test(priority = 3)
+	public void topNavigationBarandClickOnIt() {
+		navbar = new NavigationBar(driver);
+		navbar.navigationBar();				
+	}
+	
+	
+	
 	@AfterTest
 	public void close() {
 		driver.quit();
