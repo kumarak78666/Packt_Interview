@@ -35,7 +35,7 @@ public class RunSetup {
 		driver.manage().window().maximize();
 		
 		}
-	@Test(priority = 1)
+	@Test(priority = 1,enabled=true)
 	public void loginIntoApplication() {
 		login = new Login(driver);
 		login.signInlink();	
@@ -44,13 +44,13 @@ public class RunSetup {
 		login.clickLogin();
 	}
 	
-	@Test(priority = 2,enabled=false)
+	@Test(priority = 2,enabled=true)
 	public void verifyElementsInPage() {
 		elementinhomepage = new ElementsInHomePage(driver);
 		elementinhomepage.verifyElement();				
 	}
 	
-	@Test(priority = 3,enabled=false)
+	@Test(priority = 3,enabled=true)
 	public void topNavigationBarandClickOnIt() {
 		navbar = new NavigationBar(driver);
 		navbar.navigationBar();				
@@ -65,7 +65,7 @@ public class RunSetup {
 		carousel.matchCarouselwithMainTitle();				
 	}
 	
-	@Test(priority = 5,enabled=false)
+	@Test(priority = 5,enabled=true)
 	public void searchBar() throws InterruptedException {
 		browseandsearch = new BrowseandSearchBar(driver);
 		Thread.sleep(3000);		
