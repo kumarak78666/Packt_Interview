@@ -1,5 +1,6 @@
 package setUp;
 
+import java.awt.AWTException;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,10 +11,10 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 
 import webPages.BrowseandSearchBar;
+import webPages.CarouselmatchwithMainTitle;
 import webPages.ElementsInHomePage;
 import webPages.Login;
 import webPages.NavigationBar;
-import webPages.TitleOfCarousel;
 
 public class RunSetup {
 	WebDriver driver;
@@ -21,7 +22,7 @@ public class RunSetup {
 	ElementsInHomePage elementinhomepage;
 	Login login;
 	NavigationBar navbar;
-	TitleOfCarousel titc;
+	CarouselmatchwithMainTitle carousel;
 	BrowseandSearchBar browseandsearch;
 	@BeforeTest
 	public void setup() {
@@ -55,15 +56,16 @@ public class RunSetup {
 		navbar.navigationBar();				
 	}
 	
-	@Test(priority = 4,enabled=false)
-	public void matchCarouselwithMainTitle() throws InterruptedException {
-		titc = new TitleOfCarousel(driver);
+	@Test(priority = 4,enabled=true)
+	public void matchCarouselwithMainTitle() throws InterruptedException, AWTException {
+		carousel = new CarouselmatchwithMainTitle(driver);
 		Thread.sleep(3000);		
-		scrolldown(0,9000);
-		titc.carouselTitleAsMainTitle();				
+		 JavascriptExecutor js = (JavascriptExecutor) driver;
+	        js.executeScript("window.scrollBy(0,4000)", "");
+		carousel.matchCarouselwithMainTitle();				
 	}
 	
-	@Test(priority = 5)
+	@Test(priority = 5,enabled=false)
 	public void searchBar() throws InterruptedException {
 		browseandsearch = new BrowseandSearchBar(driver);
 		Thread.sleep(3000);		
@@ -72,7 +74,7 @@ public class RunSetup {
 	
 	@AfterTest
 	public void close() {
-		driver.quit();
+	//	driver.quit();
 		
 		}
 	

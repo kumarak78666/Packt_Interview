@@ -3,6 +3,7 @@ package webPages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class Login {
  WebDriver driver;
@@ -34,6 +35,7 @@ By SignINbutton = By.xpath("(//*[@id='loginPage']//button)[3]");
 	//	Thread.sleep(3000);
 		driver.findElement(SignINbutton).click();
 	}
+	
 	public void scrolldown(int from, int to) {
 		try{
 			JavascriptExecutor js = (JavascriptExecutor)driver;
@@ -44,5 +46,6 @@ By SignINbutton = By.xpath("(//*[@id='loginPage']//button)[3]");
 
 		
 	}
+	
 	
 }
