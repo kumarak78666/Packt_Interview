@@ -45,7 +45,7 @@ public class RunSetup {
 	}
 	
 	@Test(priority = 2,enabled=true)
-	public void verifyElementsInPage() {
+	public void verifyElementsInPage() throws InterruptedException {
 		elementinhomepage = new ElementsInHomePage(driver);
 		elementinhomepage.verifyElement();				
 	}
@@ -74,7 +74,7 @@ public class RunSetup {
 	
 	@AfterTest
 	public void close() {
-	//	driver.quit();
+		driver.quit();
 		
 		}
 	

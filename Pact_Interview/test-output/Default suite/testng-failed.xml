@@ -5,8 +5,8 @@
     <classes>
       <class name="setUp.RunSetup">
         <methods>
+          <include name="verifyElementsInPage"/>
           <include name="close"/>
-          <include name="matchCarouselwithMainTitle"/>
           <include name="setup"/>
         </methods>
       </class> <!-- setUp.RunSetup -->
